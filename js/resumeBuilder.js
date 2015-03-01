@@ -1,8 +1,3 @@
-//var formattedName = HTMLheaderName.replace("%data%", "Jane Doette");
-//var formattedRole = HTMLheaderRole.replace("%data%", "Artistic Director");
-
-//$("#header").prepend(formattedRole);
-//$("#header").prepend(formattedName);
 
 var bio = {
   "name": "John Doe",
@@ -97,3 +92,29 @@ var projects = {
   ]
 };
 
+
+var formattedName = HTMLheaderName.replace("%data%", "Jane Doette");
+var formattedRole = HTMLheaderRole.replace("%data%", "Artistic Director");
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
+// Skills
+if(bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	for(var i = 0; i < bio.skills.length; i++) { 
+		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]););
+  }
+}
+
+// Work
+for(job in work.jobs) {
+	var employerTemplate = HTMLworkEmployer.slice(0);
+	var formattedEmployer = employerTemplate.replace("%data%", work.jobs[job].employer);
+
+	var titleTemplate = HTMLworkTitle.slice(0);
+	var formattedTitle = titleTemplate.replace("%data%", work.jobs[job].title);
+
+	$("#workExperience").append(HTMLworkStart);
+	$(".work-entry:last").append(formattedEmployer + formattedTitle);
+}
