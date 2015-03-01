@@ -50,6 +50,7 @@ var work = {
       "employer": "Planet Express",
       "title": "Delivery Boy",
       "dates": "January 3000 - Future",
+	  "location": "Chicago, IL",
       "description": "Who moved my cheese cheesy feet cauliflower\
         cheese. Queso taleggio when the cheese comes out everybody\
         happy airedale ricotta cheese and wine paneer camebert de\
@@ -61,6 +62,7 @@ var work = {
       "employer": "Panucci's Pizza",
       "title": "Delivery Boy",
       "dates": "1998 - December 31, 1999",
+	  "location": "San Fracisco, CA",
       "description": "Who moved my cheese cheesy feet cauliflower\
         cheese. Queso taleggio when the cheese comes out everybody\
         happy airedale ricotta cheese and wine paneer camebert de\
@@ -103,18 +105,24 @@ $("#header").prepend(formattedName);
 if(bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 	for(var i = 0; i < bio.skills.length; i++) { 
-		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]););
+		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
   }
 }
 
 // Work
-for(job in work.jobs) {
-	var employerTemplate = HTMLworkEmployer.slice(0);
-	var formattedEmployer = employerTemplate.replace("%data%", work.jobs[job].employer);
+var displayWork= function() {
+	for(job in work.jobs) {
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedLoc = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		var formattedDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-	var titleTemplate = HTMLworkTitle.slice(0);
-	var formattedTitle = titleTemplate.replace("%data%", work.jobs[job].title);
-
-	$("#workExperience").append(HTMLworkStart);
-	$(".work-entry:last").append(formattedEmployer + formattedTitle);
-}
+		$("#workExperience").append(HTMLworkStart);
+		$(".work-entry:last").append(formattedEmployer + formattedTitle);
+		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedLoc);
+		$(".work-entry:last").append(formattedDesc);
+	}
+};
+displayWork();
