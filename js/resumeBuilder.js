@@ -126,3 +126,6 @@ var displayWork= function() {
 	}
 };
 displayWork();
+
+// Internationalize Button
+$("#main").append(internationalizeButton);

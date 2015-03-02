@@ -62,6 +62,13 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
+var inName = function(name) {
+	nameArray = name.trim().split(" ");
+	first = nameArray[0][0].toUpperCase() + nameArray[0].slice(1).toLowerCase();
+	last = nameArray[1].toUpperCase();
+	return first + " " + last;
+};
+
 $(document).ready(function() {
   $('button').click(function() {
     var iName = inName() || function(){};
@@ -85,7 +92,7 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  logClicks(loc.pageX, loc.pageY);
 });
 
 
