@@ -84,14 +84,9 @@ var projects = {
         normandie. Swiss mozzarella cheese slices feta fromage frais\
         airedale swiss cheesecake. Hard cheese blue castello halloumi\
         parmesan say cheese stinking bishop jarlsberg.",
-      "images": [
-        "https://lh3.ggpht.com/23-sqOpOGqF06YX3BwIYPIXLX_Ma_clLXySKEHlphqlxr21-\
-	      PPbC80U8SjDi96KTWbNjKfY2Pdq_gyFK9A=s300#w=1757&h=1080",
-        "https://lh3.ggpht.com/23-sqOpOGqF06YX3BwIYPIXLX_Ma_clLXySKEHlphqlxr21-\
-		  PPbC80U8SjDi96KTWbNjKfY2Pdq_gyFK9A=s300#w=1757&h=1080"
-      ]
+      "images": ["images/197x148.gif", "images/197x148.gif"]
     }
-  ]
+  ] 
 };
 
 
@@ -129,3 +124,26 @@ displayWork();
 
 // Internationalize Button
 $("#main").append(internationalizeButton);
+
+// Projects
+projects.display = function() {
+  for(project in projects.projects) {
+    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+    var formattedDesc = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+
+    $("#projects").append(HTMLprojectStart);
+    $(".project-entry:last").append(formattedTitle);
+    $(".project-entry:last").append(formattedDates);
+    $(".project-entry:last").append(formattedDesc);
+    for(image in this.projects[project].images)
+    {
+	  formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+	  $(".project-entry:last").append(formattedImage);
+    }
+  }
+};
+projects.display();
+
+// Add Map
+$("#mapDiv").append(googleMap);
