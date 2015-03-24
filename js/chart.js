@@ -18,11 +18,7 @@ var x = d3.scale.linear()
 
 var y = d3.scale.ordinal()
 	.domain(data.map(function(d) { return d.skill; }))
-	.rangeRoundBands([height, 0], .1);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+	.rangeRoundBands([height, 0], .1, .1);
 
 var yAxis = d3.svg.axis()
     .scale(y)
@@ -30,24 +26,28 @@ var yAxis = d3.svg.axis()
 
 var chart = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
+	.attr("width", "100%")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 chart.append("g")
-	.attr("class", "x axis")
-	.attr("transform", "translate(0," + height + ")")
-	.call(xAxis);
-
-chart.append("g")
 	.attr("class", "y axis")
 	.call(yAxis);
 
-chart.selectAll(".bar")
-	.data(data)
-  .enter().append("rect")
-	.attr("class", "bar")
-	.attr("x", function(d) { return x(0); })
-	.attr("y", function(d) { return y(d.skill); })
+var bar = chart.selectAll(".bar")
+    .data(data)
+  .enter().append("g")
+  .attr("transform", function(d) { return "translate(" + x(0) + "," + y(d.skill) + ")"; });
+
+bar.append("rect")
+    .attr("class", "bar")
 	.attr("height", y.rangeBand())
 	.attr("width", function(d) { return x(d.rating); });
+
+bar.append("text")
+	.attr("class", "bar-text")
+    .attr("x", function(d) { return x(d.rating) - 30; })
+    .attr("y", y.rangeBand() / 2)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.rating; });

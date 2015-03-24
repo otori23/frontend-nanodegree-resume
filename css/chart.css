@@ -2,8 +2,17 @@
   fill: steelblue;
 }
 
+.bar-text {
+  fill: white;
+  font: 20px bold;
+  font-family: Roboto, sans-serif;
+  text-anchor: end;
+}
+
 .axis text {
-  font: 10px sans-serif;
+  font: 15px sans-serif;
+  font-weight: bold;
+  fill: #999999;
 }
 
 .axis path,
