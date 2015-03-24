@@ -24,6 +24,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet" type="text/css">
 
+  <!-- Load the skills chart styles. -->
+  <link href="css/chart.css" rel="stylesheet" type="text/css">
+
   <!--
   jQuery is a common JavaScript library for reading and making changes to the
   Document Object Model (DOM). The DOM is a tree that contains information
@@ -48,6 +51,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   -->
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
+  <!--
+  Link to D3 for chart support
+  -->
+  <script src="js/d3.min.js"></script>
+
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
@@ -62,6 +70,14 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <ul id="topContacts" class='flex-box'></ul>
     </div>
     <div style='clear: both;'></div>
+
+
+	<div>
+		<h2>Skills Chart</h2>
+		<svg class="chart"></svg>
+		<script src="js/chart.js"></script>
+	</div>
+
     <div id="workExperience" class='gray'>
       <h2>Work Experience</h2>
     </div>
@@ -76,8 +92,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
     <div id="letsConnect" class='dark-gray'>
       <h2 class='orange center-text'>Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
+      <ul id="footerContacts" class="flex-box"></ul>
     </div>
   </div>
 
