@@ -26,7 +26,6 @@ var yAxis = d3.svg.axis()
 
 var chart = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
-	.attr("width", "100%")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
