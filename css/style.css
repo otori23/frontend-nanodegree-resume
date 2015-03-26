@@ -213,3 +213,8 @@ span {
     display: block;
   }
 }
+
+#skillsChart {
+  max-width: 960px;
+  max-height: 500px;
+}
